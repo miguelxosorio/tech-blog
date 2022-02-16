@@ -15,6 +15,8 @@ router.get('/', (req, res) => {
 // GET /api/users/1
 router.get('/:id', (req, res) => {
     User.findOne({
+        // exclude passwords to api call - protect sensitive data
+        attributes: { exclude: ['password'] }, 
         where: {
             id: req.params.id
         }
