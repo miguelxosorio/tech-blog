@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
 
 // turn on connection to db and server
 // sync takes the models and connects them to associated databasse tables, if it doesn't find a table it'll create it
+// force: true adds a DROP TABLE IF EXISTS before trying to create the table
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Now listening to Port ${PORT}`));
 });
