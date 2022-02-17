@@ -27,7 +27,10 @@ router.get('/', (req, res) => {
        // pass post to object into the homepage template
        // use this with the #each helper in the homepage.handlebars to render the posts
        // in the homepage any HTML code between the <li> will be repeated for every item in posts
-       res.render('homepage', { posts });
+       res.render('homepage', { 
+           posts,
+           loggedIn: req.session.loggedIn 
+        });
    })
    .catch(err => {
        console.log(err);
