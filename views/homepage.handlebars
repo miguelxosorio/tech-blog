@@ -1,0 +1,15 @@
+<ol>
+    <li>
+        <article>
+            <div>
+                <a href="{{content}}" target="_blank">{{title}}</a>
+                <span>({{content}})</span>
+            </div>
+            <div>
+                post made by {{user.username}} on {{created_at}}
+                |
+                <a href="/post/{{id}}" >{{comments.length}} comment(s)</a>
+            </div>
+        </article>
+    </li>
+</ol>
