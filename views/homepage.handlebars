@@ -1,12 +1,12 @@
-<ol>
+<ol class="post-list">
     {{#each posts as |post|}}
     <li>
-        <article>
-            <div>
+        <article class="post">
+            <div class="title">
                 <a href="{{content}}" target="_blank">{{title}}</a>
                 <span>({{content}})</span>
             </div>
-            <div>
+            <div class="meta">
                 post made by {{user.username}} on {{created_at}}
                 |
                 <a href="/post/{{id}}" >{{comments.length}} comment(s)</a>
