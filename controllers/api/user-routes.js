@@ -60,11 +60,18 @@ router.post('/', (req, res) => {
         email: req.body.email,
         password: req.body.password
     })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+    .then(dbUserData => {
+        // makes sure session is created before sending response back thus wrapping the variables in a callback
+        // req.session.save() will initiate the creation  of the session and then run the callback function once complete
+        req.session.save(() => {
+            // session variables
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json(dbUserData);
+        });
+    })
 });
 
 // api/users/login route
@@ -88,7 +95,13 @@ router.post('/login', (req, res) => {
             return;
         }
 
-        res.json({ user: dbUserData, message: 'You are now logged in!' });
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json({ user: dbUserData, message: 'You are now logged in!' });
+        });
     });
 });
 
