@@ -49,6 +49,31 @@ router.post('/', (req, res) => {
     });
 });
 
+// api/users/login route
+router.post('/login', (req, res) => {
+    // queried the user table using findOne() for the email entered by the user and assigned it to req.body.email
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+    .then(dbUserData => {
+        if(!dbUserData) {
+            res.status(400).json({ message: 'No user found with this email address!' });
+            return;
+        }
+        // verify user
+        const validPassword = dbUserData.checkPassword(req.body.password);
+        
+        if(!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+
+        res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
+});
+
 // PUT /api/users/1
 router.put('/:id', (req, res) => {
     // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
