@@ -1,6 +1,9 @@
-// importing express from node library
+// Importing express from node library
 const express = require('express');
+// path module works with directories and file paths
 const path = require('path');
+// Importing dotenv dependency to use process.env for sensitive information
+require('dotenv').config();
 // allows us to connect to the backend
 const session = require('express-session');
 // handlebars
@@ -8,8 +11,8 @@ const exhbs = require('express-handlebars');
 
 // creates an express application
 const app = express();
-const PORT = process.env.PORT || 3001;
-const routes = require('./controllers');
+const PORT = process.env.PORT || 3001; // dynamic port
+const routes = require('./controllers'); // storing the routes from controllers into routes var
 
 // importing sequelize connection from the config folder
 const sequelize = require('./config/connection');
@@ -18,16 +21,20 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // this sets up an express.js session and connects the session to the sequelize db
 const sess = {
-    secret: 'Super secret secret',
-    cookie: {},
-    resave: false,
-    saveUninitialized: true,
+    secret: process.env.SECRET_ID, // session cookie ID
+    cookie: {
+        expires: 60 * 60 * 1000 // expires in 1 hr
+    },
+    resave: false, // wont force the session to be saved back to session store without modifications
+    saveUninitialized: true, // Force uninitialized sessions to be saved to the store. A session is uninitialized when it is new but not modified
     store: new SequelizeStore({
         db: sequelize
     })
 };
 
+// allow express to use session
 app.use(session(sess));
+// create helpers
 const hbs = exhbs.create({});
 
 app.engine('handlebars', hbs.engine);
@@ -37,15 +44,10 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // The express.static() method is a built-in Express.js middleware function that can take all of the contents of a folder and serve them as static assets
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // takes the content of the public folder to make them available as static files
 
-// turn on routes
+// turn on routes - routes are packaged in the controller folder
 app.use(routes);
-
-// main route
-// app.get('/', (req, res) => {
-//     res.render('main');
-// })
 
 // turn on connection to db and server
 // sync takes the models and connects them to associated databasse tables, if it doesn't find a table it'll create it
