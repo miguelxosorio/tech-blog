@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
-      console.log(err);
+      console.error(err);
       res.status(500).json(err);
     });
 });
@@ -43,6 +43,14 @@ router.get('/:id', (req, res) => {
         model: User,
         attributes: ['username'],
       },
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      }
     ],
   })
     .then(dbPostData => {
@@ -53,7 +61,7 @@ router.get('/:id', (req, res) => {
       res.json(dbPostData);
     })
     .catch(err => {
-      console.log(err);
+      console.error(err);
       res.status(500).json(err);
     });
 });
@@ -67,7 +75,7 @@ router.post('/', (req, res) => {
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
-      console.log(err);
+      console.error(err);
       res.status(500).json(err);
     });
 });
@@ -93,7 +101,7 @@ router.put('/:id', (req, res) => {
       res.json(dbPostData);
     })
     .catch(err => {
-      console.log(err);
+      console.error(err);
       res.status(500).json(err);
     });
 });
@@ -113,7 +121,7 @@ router.delete('/:id', (req, res) => {
       res.json(dbPostData);
     })
     .catch(err => {
-      console.log(err);
+      console.error(err);
       res.status(500).json(err);
     });
 });

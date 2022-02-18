@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
+// get all
 router.get('/', (req, res) => {
     Comment.findAll({})
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {
-        console.log(err);
+        console.error(err);
         res.status(500).json(err);
     });
 });
@@ -21,7 +22,7 @@ router.post('/', (req, res) => {
         })
         .then(dbCommentData => res.json(dbCommentData))
         .catch(err => {
-            console.log(err);
+            console.error(err);
             res.status(400).json(err);
         });
     }
@@ -46,7 +47,7 @@ router.put('/:id', (req, res) => {
         res.json(dbCommentData);
     })
     .catch(err => {
-        console.log(err);
+        console.error(err);
         res.status(500).json(err);
     });
 });
@@ -65,7 +66,7 @@ router.delete('/:id', (req, res) => {
         res.json(dbCommentData);
     })
     .catch(err => {
-        console.log(err);
+        console.error(err);
         res.status(500).json(err);
     });
 });

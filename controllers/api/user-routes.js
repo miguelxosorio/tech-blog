@@ -4,7 +4,9 @@ const { User, Post, Comment } = require('../../models');
 // GET /api/users
 router.get('/', (req, res) => {
     // access user model and run .findAll() method
-    User.findAll()
+    User.findAll({
+        attributes: {exclude: ['password']}
+    })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
         console.log(err);
@@ -72,6 +74,10 @@ router.post('/', (req, res) => {
             res.json(dbUserData);
         });
     })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 // api/users/login route
@@ -102,7 +108,11 @@ router.post('/login', (req, res) => {
 
             res.json({ user: dbUserData, message: 'You are now logged in!' });
         });
-    });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
 });
 
 // PUT /api/users/1

@@ -17,6 +17,10 @@ router.get('/', (req, res) => {
           attributes: ['username'],
         },
       },
+      {
+          model: User,
+          attributes: ['username']
+      }
     ],
   })
   .then(dbPostData => {
@@ -66,6 +70,10 @@ router.get('/edit/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     })
+});
+
+router.get('/new-post', (req, res) => {
+    res.render('new-post');
 });
 
 module.exports = router;

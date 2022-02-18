@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
 router.get('/', (req, res) => {
-    console.log(req.session);
    Post.findAll({
        attributes: ['id', 'title', 'content', 'created_at'],
        include: [
@@ -43,9 +42,14 @@ router.get('/login', (req, res) => {
         res.redirect('/');
         return;
     }
-
     res.render('login')
 });
+
+// separate signup route
+router.get('/signup', (req, res) => {
+    // signup handlebar
+    res.render('signup');
+})
 
 router.get('/post/:id', (req, res) => {
     Post.findOne({
