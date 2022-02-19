@@ -34,3 +34,16 @@ header {
     border-radius: var(--border-radius);
     box-shadow: 5px var(--dark-red);
 }
+
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    margin: 20px auto;
+    width: 94%;
+}
