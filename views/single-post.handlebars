@@ -1,0 +1,28 @@
+<div>
+    <div>
+       <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
+        <p>Posted by {{post.user.username}} on {{post.created_at}}</p>
+    </div>
+        <p>{{post.content}}</p>
+</div>
+
+<div>
+    <textarea name="comment-body"></textarea>
+</div>
+<div>
+    <button type="submit">Add Comment</button>
+</div>
+<div>
+    {{#each post.comments}}
+    <section>
+        <div>
+            {{user.username}} on {{created_at}}
+        </div>
+        <div>
+            {{comment_text}}
+        </div>
+    </section>
+    {{/each}}
+</div>
+
+<script src="/javascript/comment.js>"></script>
