@@ -2,15 +2,15 @@
     box-sizing: border-box;
 }
 
-body, html {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    font-family: 'Courier New', Courier, monospace;
-    color: black;
-    background-color: aqua;
+:root {
+    --primary: #ccdad1;
+    --secondary: #dce9d5;
+    --tertiary: #788585;
+    --dark-magenta: #a1a0a1;
+    --dark-red: #201110;
+    --border-radius: .3rem;
 }
 
-header {
-    background-color: brown;
+body {
+    background-color: var(--primary);
 }
