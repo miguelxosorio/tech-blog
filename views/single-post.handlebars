@@ -5,13 +5,14 @@
     </div>
         <p>{{post.content}}</p>
 </div>
-
+<form class="comment-form">
 <div>
     <textarea name="comment-body"></textarea>
 </div>
 <div>
     <button type="submit">Add Comment</button>
 </div>
+</form>
 <div>
     {{#each post.comments}}
     <section>
@@ -25,4 +26,4 @@
     {{/each}}
 </div>
 
-<script src="/javascript/comment.js>"></script>
+<script src="/javascript/comment.js"></script>
