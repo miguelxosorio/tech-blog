@@ -14,3 +14,23 @@
 body {
     background-color: var(--primary);
 }
+
+header {
+    padding: 3%;
+    background-color: var(--dark-red);
+    color: var(--primary);
+}
+
+.header-link {
+    color: var(--dark-magenta);
+}
+
+.header-title {
+    font-size: 4rem;
+    background-color: var(--primary);
+    color: var(--dark-red);
+    padding: 0 10px;
+    display: inline-block;
+    border-radius: var(--border-radius);
+    box-shadow: 5px var(--dark-red);
+}
