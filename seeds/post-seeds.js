@@ -7,8 +7,8 @@ const postData = [
         user_id: 1
     },
     {
-        title: 'Luigi Goes Wild',
-        content: 'Luigi Luigi Luigi goes goes goes wild wild wild with shrooms',
+        title: 'Luigi Goes Ham',
+        content: 'Luigi Luigi Luigi goes goes goes ham ham ham with a star',
         user_id: 2
     },
     {

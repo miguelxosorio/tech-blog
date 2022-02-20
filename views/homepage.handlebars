@@ -1,9 +1,5 @@
+<article>
 {{#each posts as |post|}}
-<div>
-    <div>
-        <a href="/post/{{id}}"><h4>{{title}}</h4></a>
-        <p>Posted by{{user.username}} on {{created_at}}</p>
-    </div>
-    <p>{{content}}</p>
-</div>
+        {{> post-info post}}
 {{/each}}
+</article>
