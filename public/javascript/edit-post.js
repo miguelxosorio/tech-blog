@@ -23,6 +23,6 @@ async function editPost (event) {
     } else {
         alert(response.statusText);
     }
-}
+};
 
 document.querySelector('#edit-post-form').addEventListener('submit', editPost);
