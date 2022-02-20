@@ -3,7 +3,7 @@ async function newPost (event) {
 
     const title = document.querySelector('input[name="post-title"]').value;
     const content = document.querySelector('input[name="content"]').value;
-  
+    
     const response = await fetch('/api/posts', {
       method: 'POST',
       body: JSON.stringify({
@@ -20,6 +20,7 @@ async function newPost (event) {
     } else {
       alert(response.statusText);
     }
+    
 };
-
+console.log(document.querySelector('#new-post-form'))
 document.querySelector('#new-post-form').addEventListener('submit', newPost);
