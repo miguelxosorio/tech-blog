@@ -26,7 +26,7 @@ header {
 }
 
 .header-title {
-    font-size: 4rem;
+    font-size: 3rem;
     background-color: var(--primary);
     color: var(--dark-red);
     padding: 0 10px;
@@ -46,4 +46,27 @@ header {
 main {
     margin: 20px auto;
     width: 94%;
+}
+
+.nav {
+    padding: 8px;
+    line-height: 2;
+    float: top;
+}
+
+.card {
+    margin: 0 0 15px 0;
+    border: 2px solid var(--dark-red);
+    border-radius: var(--border-radius);
+}
+
+.card-header {
+    color: var(--primary);
+    background-color: var(--dark-red);
+    padding: 1.5%;
+    border-radius: calc(.15rem - 1px) calc(.15rem - 1px);
+}
+
+.card-body {
+    padding: 2%;
 }
