@@ -8,6 +8,8 @@ require('dotenv').config();
 const session = require('express-session');
 // handlebars
 const exhbs = require('express-handlebars');
+// import helpers
+const helpers = require('./utils/helpers');
 
 // creates an express application
 const app = express();
@@ -34,8 +36,8 @@ const sess = {
 
 // allow express to use session
 app.use(session(sess));
-// create helpers
-const hbs = exhbs.create({});
+// create helpers - pass in 
+const hbs = exhbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 // set up view engine
