@@ -1,6 +1,17 @@
 const { format_date } = require('../utils/helpers');
+const { format_plural } = require('../utils/helpers');
 
+// test to format the date to M/DD/YYYY
 test('format_date() returns a date string', () => {
     const date = new Date('2022-02-20 17:04:30');
     expect(format_date(date)).toBe('2/20/2022');
+});
+
+// test to pluralize a word
+test('format_plural() pluralizes a singular word', () => {
+    const word1 = format_plural('tiger', 2);
+    const word2 = format_plural('lion', 1);
+
+    expect(word1).toBe('tigers');
+    expect(word2).toEqual('lion');
 });
