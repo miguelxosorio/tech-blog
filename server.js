@@ -10,6 +10,8 @@ const session = require('express-session');
 const exhbs = require('express-handlebars');
 // import helpers
 const helpers = require('./utils/helpers');
+// cookie parser
+const cookieParser = require('cookie-parser');
 
 // creates an express application
 const app = express();
@@ -23,7 +25,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // this sets up an express.js session and connects the session to the sequelize db
 const sess = {
-    secret: process.env.SECRET_ID, // session cookie ID
+    secret: 'Super secret secret', // session cookie ID
     cookie: {
         expires: 60 * 60 * 1000 // expires in 1 hr
     },
@@ -31,8 +33,10 @@ const sess = {
     saveUninitialized: true, // Force uninitialized sessions to be saved to the store. A session is uninitialized when it is new but not modified
     store: new SequelizeStore({
         db: sequelize
-    })
+    }) // this is gona create a session with the db, set up the session table, and allow sequelize to save the session into the db
 };
+
+// app.use(cookieParser);
 
 // allow express to use session
 app.use(session(sess));
