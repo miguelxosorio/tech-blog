@@ -92,3 +92,30 @@ main {
     transform: translate(0, 0);
     box-shadow: 2px 2px var(--dark-red);
 }
+
+p {
+    font-size: 1.4rem;
+}
+
+h1, h2, h3, h4 {
+    color: var(--dark-red);
+    margin: 0;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.form-label {
+    font-size: 1.1rem;
+    margin: 0 0 0 5px;
+    display: block;
+}
+
+.form-input {
+    border: 2px solid var(--dark-magenta);
+    border-radius: var(--border-radius);
+    display: block;
+    width: 100%;
+    padding: 3%;
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
