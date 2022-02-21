@@ -6,20 +6,24 @@
 
 It's a simple blog format where you can sign up, make your own posts, and make comments under the posts.
 
+[tech-blog](https://tech-blog--dev.herokuapp.com/)
+
 ## Table of Contents
 
 * [Framework](#framework)
-* [Installation](#installation)
-* [Usage](#usage)
 * [License](#license)
 * [Contributing](#contributing)
 * [Questions](#questions)
 * [Resources](#resources)
 
+![homepage](https://github.com/miguelxosorio/tech-blog/blob/main/public/assets/homepage.PNG)
+![login](https://github.com/miguelxosorio/tech-blog/blob/main/public/assets/login.PNG)
+
 ## Framework
 
 * `node.js`
 * `express.js`
+* `express-sessions`
 * `mysql`
 
 ## License
@@ -38,4 +42,5 @@ Questions about this repository? Contact me at [miguel.osorio19@yahoo.com](mailt
 * [mysql2](https://www.npmjs.com/package/mysql)
 * [sequelize](https://www.npmjs.com/package/sequelize)
 * [express](https://expressjs.com/)
+* [sessions](https://www.npmjs.com/package/express-session)
 * [Shields License and Badges](https://shields.io/category/license)
